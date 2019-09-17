@@ -1,0 +1,7 @@
+tensorflow==2.0rc
+tensorflow-probability
+matplotlib
+sklearn
+numpy
+tqdm
+urllib3

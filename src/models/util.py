@@ -25,14 +25,15 @@ def neg_loglike(y, rv_y):
     return -tf.reduce_mean(rv_y.log_prob(y))
 
 
-def make_default_dense_prior(kernel_size, bias_size=0,
-                             prior_mean=0., prior_sd=10., dtype=None):
+def make_default_dense_prior(kernel_size, bias_size=0, dtype=None,
+                             prior_mean=0, prior_sd=100):
     n = kernel_size + bias_size
+    mu = [prior_mean] * n
     return tf.keras.Sequential([
-        tfp.layers.VariableLayer(n, dtype=dtype),
-        tfp.layers.DistributionLambda(lambda mu: tfd.Independent(
-            tfd.Normal(loc=mu, scale=1),
-            reinterpreted_batch_ndims=1)),
+        # tfp.layers.VariableLayer(n, dtype=dtype),
+        tfp.layers.DistributionLambda(lambda _: tfd.Independent(
+            tfd.Normal(loc=mu, scale=prior_sd),
+            reinterpreted_batch_ndims=1))
     ])
 
 

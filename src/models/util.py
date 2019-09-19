@@ -58,14 +58,3 @@ def make_default_dense_guide(kernel_size, bias_size=0, dtype=None):
             )
         ),
     ])
-
-
-# x = tfd.Normal(loc=[-1., 1], scale=[0.1, 0.5])
-# ind = tfd.Independent(x, reinterpreted_batch_ndims=1)
-# ind.batch_shape
-# 
-# sum(x.log_prob([1, 2]))
-# ind.log_prob([1, 2])
-# 
-# x.sample()
-# ind.sample()

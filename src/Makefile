@@ -2,7 +2,9 @@ SHELL = /bin/bash
 
 .PHONY: activate deactivate install test init clean write-freeze console
 
-ACTIVATE = . venv/bin/activate
+VENV = venv
+
+ACTIVATE = . $(VENV)/bin/activate
 
 activate:
 	$(ACTIVATE) && bash
@@ -13,14 +15,14 @@ deactivate:
 	@echo
 
 init:
-	python3 -m venv --system-site-packages venv && \
+	python3 -m venv --system-site-packages $(VENV) && \
 		$(ACTIVATE) && python3 -m pip install -U pip
 
 console:
 	$(ACTIVATE) && python3
 
 clean:
-	rm -rf venv/
+	rm -rf $(VENV)/
 
 freeze:
 	@$(ACTIVATE) && python3 -m pip freeze

@@ -4,4 +4,4 @@ matplotlib
 sklearn
 numpy
 tqdm
-urllib3
+urllib3==1.24.3

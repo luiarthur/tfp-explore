@@ -1,4 +1,4 @@
-tensorflow==2.0rc
+tensorflow==2.9.3
 tensorflow-probability
 matplotlib
 sklearn
